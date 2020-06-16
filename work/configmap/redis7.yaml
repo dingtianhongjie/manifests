@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis7
+spec:
+  containers:
+    - name: redis7
+      image: redis:latest
+      volumeMounts:
+      - name: config-volume1
+        mountPath: /etc/config1
+      - name: config-volume2
+        mountPath: /etc/config2
+  volumes:
+    - name: config-volume1
+      configMap:
+        name: sample-configmap1
+    - name: config-volume2
+      configMap:
+        name: sample-configmap2

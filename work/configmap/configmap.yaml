@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-configmap4
+data:
+  maxmemory: 2mb
+  maxmemory-policy: allkeys-lru

@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001
+  labels:
+    env: stg
+spec:
+  capacity:
+    storage: 500Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /share
+    server: k8s-client
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0002
+  labels:
+    env: stg
+spec:
+  capacity:
+    storage: 400Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /share
+    server: k8s-client
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0003
+  labels:
+    env: prd
+spec:
+  capacity:
+    storage: 600Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /share
+    server: k8s-client
+---

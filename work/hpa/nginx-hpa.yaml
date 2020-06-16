@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer
+spec:
+  ports:
+  - name: load-balancer
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30002
+  selector:
+    app: nginx-dep
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-dep
+  template:
+    metadata:
+      labels:
+        app: nginx-dep
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 300m

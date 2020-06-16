@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-count-quota-previous
+  namespace: stg
+spec:
+  hard:
+    services.nodeports: 3
+    pods: 3

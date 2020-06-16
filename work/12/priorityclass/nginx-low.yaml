@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-low
+spec:
+  containers:
+  - name: nginx-low
+    image: nginx:latest
+    resources:
+      requests:
+        cpu: 1500m
+  priorityClassName: low-priority

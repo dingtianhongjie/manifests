@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-default1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-default2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-default3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-default4
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+---

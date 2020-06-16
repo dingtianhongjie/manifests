@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-example
+  namespace: zfs-system
+spec:
+  containers:
+  - name: nginx-example
+    image: nginx:latest
+    volumeMounts:
+      - name: zfs-volume
+        mountPath: /cache
+  volumes:
+    - name: zfs-volume
+      persistentVolumeClaim:
+        claimName: example-pvc

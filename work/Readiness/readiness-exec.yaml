@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: app1
+  name: nginx-readiness
+spec:
+  containers:
+  - name: nginx-readiness
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - mountPath: /check
+      name: check-vol
+    readinessProbe:
+      exec:
+        command:
+        - cat
+        - /check/testfile
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 1
+      successThreshold: 1
+      failureThreshold: 1
+  volumes:
+  - name: check-vol
+    hostPath:
+      path: /test
+      type: Directory
