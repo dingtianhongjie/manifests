@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-prd
+spec:
+  selector:
+    matchLabels:
+      env: prd
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: env
+                operator: In
+                values:
+                - prd
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: nginx-prd
+        image: nginx:latest

@@ -1,0 +1,7 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: zfs-sc
+  namespace: zfs-system
+provisioner: gentics.com/zfs
+reclaimPolicy: Retain

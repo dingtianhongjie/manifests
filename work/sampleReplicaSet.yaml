@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample-pod3
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-redis
+  template:
+    metadata:
+      labels:
+        app: nginx-redis
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+        - name: redis
+          image: redis:latest

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-high
+spec:
+  containers:
+  - name: nginx-high
+    image: nginx:latest
+    resources:
+      requests:
+        cpu: 1500m
+  priorityClassName: high-priority

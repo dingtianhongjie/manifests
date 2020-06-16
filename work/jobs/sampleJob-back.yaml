@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-job-back
+spec:
+  completions: 5
+  parallelism: 1
+  backoffLimit: 3
+  template:
+    spec:
+      containers:
+      - name: sample-job1
+        image: centos:latest
+        command: ["sh", "-c"]
+        args: ["ls; exit 1"]
+      restartPolicy: Never

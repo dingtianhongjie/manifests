@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: sample-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          containers:
+          - name: sample-cronjob
+            image: centos:latest
+            command: 
+            - sh
+            - -c
+            args:
+            - echo "start job"; sleep 5; echo "end job"; exit 1
+          restartPolicy: Never

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis4
+spec:
+  containers:
+  - name: redis4
+    image: redis:latest
+    envFrom:
+    - configMapRef:
+        name: sample-configmap2

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-count-quota-consolidate
+  namespace: prd
+spec:
+  hard:
+    # v1.9以降の記載
+    count/deployments.apps: 3
+    count/jobs.batch: 3
+
+    # v1.9未満の記載
+    pods: 5
+    services.loadbalancers: 5 

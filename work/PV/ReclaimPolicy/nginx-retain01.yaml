@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-rtn01
+spec:
+  containers:
+  - image: nginx:latest
+    name: nginx-rtn01
+    volumeMounts:
+    - mountPath: /cache
+      name: cache-pv01
+  volumes:
+  - name: cache-pv01
+    persistentVolumeClaim:
+      claimName: claim-rtn01

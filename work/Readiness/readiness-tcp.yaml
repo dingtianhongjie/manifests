@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: app1
+  name: nginx-tcp
+spec:
+  containers:
+  - name: nginx-tcp
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    readinessProbe:
+      tcpSocket:
+        port: 77
+      initialDelaySeconds: 60
+      periodSeconds: 5
+      timeoutSeconds: 1
+      successThreshold: 1
+      failureThreshold: 1

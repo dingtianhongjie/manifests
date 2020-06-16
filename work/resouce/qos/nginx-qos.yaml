@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-guaranteed
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prd
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      containers:
+        - name: nginx-guaranteed
+          image: nginx:latest
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 1100m
+            limits:
+              memory: 200Mi
+              cpu: 1100m
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-burstable
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prd
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      containers:
+        - name: nginx-burstable
+          image: nginx:latest
+          resources:
+            requests:
+              cpu: 500m
+            limits:
+              cpu: 1500m
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-besteffort
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prd
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      containers:
+        - name: nginx-besteffort
+          image: nginx:latest

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-init
+  labels:
+    app: app1
+spec:
+  containers:
+  - name: init01
+    image: centos:latest
+    args:
+    - /bin/sh
+    - -c
+    - echo "test" > /test/index.html
+    volumeMounts:
+    - mountPath: /test
+      name: test-vol
+  volumes:
+  - name: test-vol
+    hostPath:
+      path: /test
+      type: Directory

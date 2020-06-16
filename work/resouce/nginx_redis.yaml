@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-quota
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prd
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+        - name: redis
+          image: redis:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: no-resource-quota
+  namespace: prd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prd
+  template:
+    metadata:
+      labels:
+        env: prd
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+        - name: redis
+          image: redis:latest

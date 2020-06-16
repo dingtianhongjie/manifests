@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx-dep
+  template:
+    metadata:
+      labels:
+        app: nginx-dep
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx-container
+        volumeMounts:
+        - mountPath: /cache
+          name: cache-pv
+      volumes:
+      - name: cache-pv
+        persistentVolumeClaim:
+          claimName: myclaim
+          readOnly: false

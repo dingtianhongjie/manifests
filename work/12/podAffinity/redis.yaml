@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: stg
+  name: redis-stg
+spec:
+  containers:
+  - name: redis-stg
+    image: redis:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: prd
+  name: redis-prd
+spec:
+  containers:
+  - name: redis-prd
+    image: redis:latest

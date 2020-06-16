@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-job1
+spec:
+  template:
+    spec:
+      containers:
+      - name: sample-job1
+        image: centos:latest
+        command: ["echo"]
+        args: ["hoge"]
+      restartPolicy: Never

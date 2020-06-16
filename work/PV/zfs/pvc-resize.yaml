@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: example-pvc-resize
+  namespace: zfs-system
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "zfs-sc-resize"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      #storage: 10Mi
+      storage: 50Mi
