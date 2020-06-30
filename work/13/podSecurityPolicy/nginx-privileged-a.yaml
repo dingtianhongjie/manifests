@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-privileged-a
+spec:
+  containers:
+  - name: nginx-privileged-a
+    image: nginx:latest
+    securityContext:
+      privileged: true
+  serviceAccountName: sa
+  automountServiceAccountToken: true

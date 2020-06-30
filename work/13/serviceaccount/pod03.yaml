@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-custom-temp
+spec:
+  containers:
+  - name: nginx
+    image: jp.icr.io/my-praivate-repo/nginx-custom:latest
+    command:
+    - sh
+    - -c
+    args:
+    - tail -f /dev/null
+#  serviceAccountName: service-account-image-pull

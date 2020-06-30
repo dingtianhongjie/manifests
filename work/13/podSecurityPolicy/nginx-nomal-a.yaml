@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-pod01
+  name: nginx-nomal-a
 spec:
   containers:
-  - name: nginx
+  - name: nginx-nomal-a
     image: nginx:latest
-  serviceAccountName: service-account01
+  serviceAccountName: sa
   automountServiceAccountToken: true
